@@ -1,9 +1,11 @@
 import os
+import sys
 
 import pytest
 
 from utils.html_builder import DictHtmlBuilder
 from utils.wiki_animals_scraper import WikiScraper
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 VALID_URL = "https://en.wikipedia.org/wiki/List_of_animal_names"
 INVALID_URL = "https://en.wikipedia.org/wiki/List_of_animal_namesaaa"
