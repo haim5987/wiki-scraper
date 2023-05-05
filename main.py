@@ -19,13 +19,12 @@ if __name__ == '__main__':
     # Use concurrent.futures to run the tasks of dictionary builder and images saver in parallel
     with concurrent.futures.ThreadPoolExecutor() as executor:
         animal_adj_dict_task = executor.submit(wiki_scraper.get_adjective_animals_dict)
-        img_saver_task = executor.submit(wiki_scraper.save_animals_images)
+        # img_saver_task = executor.submit(wiki_scraper.save_animals_images)
 
         animal_adj_dict = animal_adj_dict_task.result()
 
         converter = DictHtmlBuilder(animal_adj_dict)
         converter.export_dict_to_html(INDEX_HTML)
 
-        img_result = img_saver_task.result()
-        # print_dir_content(TMP_PATH)
+        # img_result = img_saver_task.result()
         display_adj_animal_dict_and_lcl_links(animal_adj_dict)

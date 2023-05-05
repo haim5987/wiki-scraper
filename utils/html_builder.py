@@ -37,7 +37,6 @@ class DictHtmlBuilder:
     def __parse_animals(self, animal_title, row, animals):
         for animal in animals:
             animal_link = self.soup.new_tag(LINK_TAG)
-            animal_link.attrs[HREF_TAG] = f'{TMP_PATH}/{animal}.jpg'
             animal_link.string = f'{animal}'
             animal_title.append(animal_link)
             br = self.soup.new_tag(END_LINE_TAG)
