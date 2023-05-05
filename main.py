@@ -19,3 +19,4 @@ if __name__ == '__main__':
         converter.export_dict_to_html(INDEX_HTML)
 
         img_result = img_saver_task.result()
+
