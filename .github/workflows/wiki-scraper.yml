@@ -19,5 +19,6 @@ jobs:
     - name: Run Tests
       uses: pytest
 
+
     - name: Run main flow
       run: python3 main.py
