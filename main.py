@@ -9,6 +9,7 @@ def display_adj_animal_dict_and_lcl_links(adj_animal_dict):
         print(f"List of Animals of {adjective}:")
         for animal in adj_animal_dict[adjective]:
             print(f'    {animal}: {TMP_PATH}/{animal}.jpg')
+        print('')
 
 
 if __name__ == '__main__':
