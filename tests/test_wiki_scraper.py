@@ -3,6 +3,7 @@ import sys
 
 import pytest
 
+from utils.utils_functions import print_dir_content
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.html_builder import DictHtmlBuilder
@@ -56,6 +57,7 @@ def test_tmp_dir_contain_valid_img():
     scraper.init_species_table()
 
     scraper.save_animals_images()
+    print_dir_content('/tmp')
     assert os.path.isfile('/tmp/Gerbil.jpg')
     assert os.path.isfile('/tmp/Lemur.jpg')
     assert os.path.isfile('/tmp/Partridge.jpg')
