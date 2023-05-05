@@ -15,4 +15,4 @@ The program will output the results to both the console and an HTML file named i
 
 ## Testing
 To run the tests, navigate to the tests/ directory and run the following command:
-```sudo pytest ```
+```sudo pytest```
