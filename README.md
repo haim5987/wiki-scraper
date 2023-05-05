@@ -10,7 +10,7 @@ This is a Python program that scrapes data from the Wikipedia page https://en.wi
 ## Usage
 1. Clone the repository: git clone https://github.com/haim5987/wiki-scraper.git
 2. Install the required packages: pip install -r requirements.txt
-3. Run the main program: python3 main.py <br><br>
+3. Run the main program: ```python3 main.py``` <br><br>
 The program will output the results to both the console and an HTML file named index.html in the project root directory. Additionally, it downloads images of the animals to the /tmp/ directory.
 
 # Testing
