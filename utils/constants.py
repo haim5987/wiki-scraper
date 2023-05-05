@@ -41,6 +41,9 @@ SPECIES_TABLE_UNINITIALIZED = 'Error: Species table is uninitialized'
 PROCESSING_IMG_ERROR = 'Error processing animal:'
 PROCESSING_ANIMAL_ADJ_ERROR = 'Error processing row for dictionary'
 SOUP_INIT_ERROR = 'Error initialize BeautifulSoup object with the URL: '
+DIRECTORY_ERROR = 'is not a directory.'
+ACCESS_DIR_ERROR = 'Error accessing directory'
+
 
 # HTML CSS STYLE
 CSS_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" ' \
