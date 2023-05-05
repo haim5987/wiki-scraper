@@ -3,11 +3,10 @@ import sys
 
 import pytest
 
-from utils.utils_functions import print_dir_content
-
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.html_builder import DictHtmlBuilder
 from utils.wiki_animals_scraper import WikiScraper
+from utils.utils_functions import print_dir_content
 
 VALID_URL = "https://en.wikipedia.org/wiki/List_of_animal_names"
 INVALID_URL = "https://en.wikipedia.org/wiki/List_of_animal_namesaaa"
