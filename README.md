@@ -8,7 +8,7 @@ This is a Python program that scrapes data from the Wikipedia page https://en.wi
 * BeautifulSoup 4
 
 ## Usage
-1. Clone the repository: git clone https://github.com/<your_username>/wiki-scraper.git
+1. Clone the repository: git clone https://github.com/haim5987/wiki-scraper.git
 2. Install the required packages: pip install -r requirements.txt
 3. Run the main program: python main.py <br><br>
 The program will output the results to both the console and an HTML file named index.html in the project root directory. Additionally, it downloads images of the animals to the /tmp/ directory.
