@@ -10,8 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout wiki-scraper
       uses: actions/checkout@v2
 
     - name: Install dependencies
       run: pip install -r requirements.txt
+
+    - name: Run main flow
+      run: python3 main.py
