@@ -55,6 +55,7 @@ def test_tmp_dir_contain_valid_img():
     scraper = WikiScraper(VALID_URL)
     scraper.init_species_table()
     print_dir_content('/tmp')
+    print("after")
     scraper.save_animals_images()
     print_dir_content('/tmp')
     # assert os.path.isfile('/tmp/Gerbil.jpg')
