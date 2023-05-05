@@ -13,6 +13,6 @@ This is a Python program that scrapes data from the Wikipedia page https://en.wi
 3. Run the main program: ```python3 main.py``` <br><br>
 The program will output the results to both the console and an HTML file named index.html in the project root directory. Additionally, it downloads images of the animals to the /tmp/ directory.
 
-# Testing
+## Testing
 To run the tests, navigate to the tests/ directory and run the following command:
 ``` pytest ```
