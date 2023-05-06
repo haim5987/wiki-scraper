@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
         animal_adj_dict = animal_adj_dict_task.result()
 
-        converter = DictHtmlBuilder(animal_adj_dict)
+        converter = DictHtmlBuilder(animal_adj_dict, HTML_FILE_TITLE)
         converter.export_dict_to_html(INDEX_HTML)
 
         img_result = img_saver_task.result()
