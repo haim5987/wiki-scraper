@@ -3,12 +3,12 @@ from utils.constants import *
 
 
 class DictHtmlBuilder:
-    def __init__(self, dictionary): # todo add title
+    def __init__(self, dictionary, title):
         self.my_dict = dictionary
         self.soup = BeautifulSoup(HTML_FILE_HEADER, HTML_PARSER)
-        self.soup.title.string = HTML_FILE_TITLE
+        self.soup.title.string = title
         h1 = self.soup.new_tag(H1_TAG)
-        h1.string = HTML_FILE_TITLE
+        h1.string = title
         self.soup.body.append(h1)
 
     def html_builder(self):
@@ -38,6 +38,7 @@ class DictHtmlBuilder:
         for animal in animals:
             animal_link = self.soup.new_tag(LINK_TAG)
             animal_link.string = f'{animal}'
+            animal_link.attrs[HREF_TAG] = f'file:///tmp/{animal}.jpg'
             animal_title.append(animal_link)
             br = self.soup.new_tag(END_LINE_TAG)
             animal_title.append(br)
