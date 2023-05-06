@@ -121,12 +121,12 @@ def process_row_for_img(row):
         img_src = get_img_src_from_soup(animal_soup)
         if img_src:
             save_image_from_img_src(TMP_PATH, animal_name, img_src)
-        else:
-            print(1)
-            print(animal_name)
 
 
 def get_img_src_from_soup(soup):
+    """
+    Get the image source from a Beautiful Soup object, attempting to find it in the 'infobox' or 'thumb' classes.
+    """
     img_src = get_img_src_from_infobox(soup)
     if not img_src:
         img_src = get_img_src_from_thumb(soup)

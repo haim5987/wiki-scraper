@@ -35,7 +35,7 @@ def get_img_src_from_infobox(wiki_page):
 
 
 def get_img_src_from_thumb(wiki_page):
-    # Extracts the image source URL from a Wikipedia page infobox.
+    # Extracts the image source URL from a Wikipedia page thumb.
     thumb_div = wiki_page.find('div', {CLASS: 'thumb'})
     if thumb_div:
         img_tag = thumb_div.find(IMG_TAG)
