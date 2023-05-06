@@ -100,7 +100,6 @@ def process_row_for_dict(row):
 
         adj_animal_dict = {}
         [add_pair_to_dict(adj_animal_dict, adjective, animal_name) for adjective in adjective_lst]
-        # [adj_animal_dict.setdefault(adjective, []).append(animal_name) for adjective in adjective_lst]
 
         return adj_animal_dict
 
