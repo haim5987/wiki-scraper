@@ -2,7 +2,7 @@ name: Wiki Scraper Workflow
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, oop-design ]
 
 
 jobs:

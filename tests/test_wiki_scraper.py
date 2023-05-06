@@ -57,7 +57,7 @@ def test_tmp_dir_contain_valid_img():
     scraper.init_species_table()
 
     origin_tmp_len = len(os.listdir('/tmp'))
-    scraper.save_animals_images()
+    scraper.download_animals_images()
     new_tmp_len = len(os.listdir('/tmp'))
 
     assert new_tmp_len > origin_tmp_len

@@ -1,5 +1,9 @@
 import concurrent.futures
-from utils.utils_functions import *
+import requests
+import urllib.request
+import os
+from bs4 import BeautifulSoup
+from utils.constants import *
 
 """A class for scraping Wikipedia pages to build a dictionary of collateral adjectives and animals, along with 
 animals images. """
@@ -24,14 +28,12 @@ class WikiScraper:
         self.__url = url
 
     def get_adjective_animals_dict(self):
-        self.__check_species_table_init()
-
         adj_animal_dict = {}
+        self.__check_species_table_init()
 
         # Use concurrent.futures to map and reduce species table
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            futures = [executor.submit(WikiScraper.process_row_for_dict, row) for row in self.__get_species_table_rows()]
-
+            futures = [executor.submit(WikiScraper.extract_animal_details, animal_row) for animal_row in self.__get_species_table_rows()]
             # Wait for all the futures to complete
             for future in concurrent.futures.as_completed(futures):
                 try:
@@ -41,15 +43,13 @@ class WikiScraper:
 
         return adj_animal_dict
 
-    def save_animals_images(self):
+    def download_animals_images(self):
         self.__check_species_table_init()
-
-        check_and_create_dir(TMP_PATH)
+        WikiScraper.check_and_create_dir(TMP_PATH)
 
         # Use concurrent.futures to map and reduce species table
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            futures = [executor.submit(WikiScraper.process_row_for_img, row) for row in self.__get_species_table_rows()]
-
+            futures = [executor.submit(WikiScraper.download_animal_image, animal_row) for animal_row in self.__get_species_table_rows()]
             # Wait for all threads to complete
             for future in concurrent.futures.as_completed(futures):
                 try:
@@ -63,7 +63,6 @@ class WikiScraper:
     def __check_species_table_init(self):
         if self.species_table is None or len(self.species_table) == 0:
             print(SPECIES_TABLE_UNINITIALIZED)
-            exit(EXIT_FAIL)
 
     def __is_soup_valid(self):
         return self.__soup is not None
@@ -85,7 +84,7 @@ class WikiScraper:
         ]
 
     @staticmethod
-    def process_row_for_dict(row):
+    def extract_animal_details(row):
         # This function processes a row in the species table to generate dictionary of Collateral adjective and animals
         cells = row.find_all(CELL_TAG)
 
@@ -104,7 +103,7 @@ class WikiScraper:
         return {}
 
     @staticmethod
-    def process_row_for_img(row):
+    def download_animal_image(row):
         # This function processes a row in the species table to generate and saves animals images from animals links.
         cells = row.find_all(CELL_TAG)
 
@@ -171,3 +170,9 @@ class WikiScraper:
                 dict1[adjective].extend(animals)
             else:
                 dict1[adjective] = animals
+
+    @staticmethod
+    def check_and_create_dir(path):
+        # Checks if a directory exists at the given path, and creates it if it doesn't exist.
+        if not os.path.isdir(path):
+            os.makedirs(path)
