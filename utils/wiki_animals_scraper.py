@@ -43,6 +43,7 @@ class WikiScraper:
 
     def save_animals_images(self):
         self.__check_species_table_init()
+        
         # Use concurrent.futures to map and reduce species table
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = [executor.submit(process_row_for_img, row) for row in self.__get_species_table_rows()]
