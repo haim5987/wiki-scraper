@@ -63,7 +63,6 @@ if __name__ == '__main__':
     wiki_scraper.init_species_table()
 
     if not args.build_dict and not args.save_images:
-        # Run all tasks if no command-line arguments are provided
         run_all_tasks()
 
     run_build_dict_task()
