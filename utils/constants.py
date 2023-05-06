@@ -44,8 +44,22 @@ SOUP_INIT_ERROR = 'Error initialize BeautifulSoup object with the URL: '
 DIRECTORY_ERROR = 'is not a directory.'
 ACCESS_DIR_ERROR = 'Error accessing directory'
 
+# Args Consts
+SCRIPT_DESCRIPTIONS = 'Build Collateral adjectives and animals dictionary,' \
+                      ' download and save animals images and export the data to html'
+BUILD_DICT_FLAG = '--build-dict'
+BUILD_DICT_DESCRIPTIONS = 'Build animal dictionary'
+SAVE_IMAGES_FLAG = '--save-images'
+SAVE_IMAGES_DESCRIPTIONS = 'Save animal images'
 
-# HTML CSS STYLE
+# General Info
+BUILDING_DICT_INFO = "Building dictionary...\n"
+DICT_SUCCESS_INFO = "Dictionary built successfully.\n"
+SAVE_IMAGES_INFO = "Download and saving animals images...\n"
+IMAGES_SUCCESS_INFO = "Images saved successfully.\n"
+HTML_SUCCESS_INFO = "HTML file built successfully.\n"
+
+# HTML CSS Style
 CSS_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" ' \
             'href="https://fonts.gstatic.com" crossorigin> <link ' \
             'href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" ' \
@@ -68,3 +82,4 @@ BORDER_STYLE = 'border: solid rgb(0,0,0,0.5) 1px;'
 REQUEST_HEADER_IMG = {
         'User-Agent': 'MyApplication/1.0'
     }
+
