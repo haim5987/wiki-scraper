@@ -32,7 +32,7 @@ class WikiScraper:
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = [executor.submit(process_row_for_dict, row) for row in self.__get_species_table_rows()]
 
-            # Wait for all the futures to complete
+            # Wait for all threads to complete
             for future in concurrent.futures.as_completed(futures):
                 try:
                     merge_dict(adj_animal_dict, future.result())
