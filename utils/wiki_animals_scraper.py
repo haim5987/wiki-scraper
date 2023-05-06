@@ -43,10 +43,9 @@ class WikiScraper:
 
     def save_animals_images(self):
         self.__check_species_table_init()
-        counter = 0
         # Use concurrent.futures to map and reduce species table
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            futures = [executor.submit(process_row_for_img, row, counter) for row in self.__get_species_table_rows()]
+            futures = [executor.submit(process_row_for_img, row) for row in self.__get_species_table_rows()]
 
             # Wait for all threads to complete
             for future in concurrent.futures.as_completed(futures):
@@ -54,7 +53,6 @@ class WikiScraper:
                     future.result()
                 except Exception as e:
                     print(f'{PROCESSING_IMG_ERROR}: {e}')
-        print(f'img None counter: {counter}')
 
     def __get_species_table_rows(self):
         return self.species_table.find_all(ROW_TAG)[1:]
@@ -108,7 +106,7 @@ def process_row_for_dict(row):
     return {}
 
 
-def process_row_for_img(row, counter):
+def process_row_for_img(row):
     """
     This function processes a row in the species table to generate and saves animals images from animals links.
     """
@@ -122,6 +120,7 @@ def process_row_for_img(row, counter):
         animal_soup = get_soup_of_url(f'{WIKI_URL}{animal_href}')
         img_src = get_img_src_from_infobox(animal_soup)
         if img_src is None:
-            print(1)
-            counter += 1
+            img_src = get_img_src_from_thumb(animal_soup)
+            if img_src is None:
+                print(1)
         save_image_from_img_src(TMP_PATH, animal_name, img_src)

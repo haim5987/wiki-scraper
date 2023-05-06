@@ -35,6 +35,15 @@ def get_img_src_from_infobox(wiki_page):
         return img_src
 
 
+def get_img_src_from_thumb(wiki_page):
+    # Extracts the image source URL from a Wikipedia page infobox.
+    thumb_div = wiki_page.find('div', {CLASS: 'thumb'})
+    if thumb_div:
+        img_tag = thumb_div.find(IMG_TAG)
+        img_src = img_tag.get(SRC_TAG)
+        return img_src
+
+
 def get_html_link_title(cell_tag):
     # Returns the `title` attribute of the first <a> tag found within the given Beautiful Soup `cell_tag`.
     return cell_tag.a[TITLE_TAG]
