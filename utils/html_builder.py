@@ -11,7 +11,7 @@ class DictHtmlBuilder:
         h1.string = title
         self.soup.body.append(h1)
 
-    def html_builder(self):
+    def adj_animals_html_builder(self):
         """
         This method build html page from given dictionary of Collateral adjective and Animals list
         """
@@ -46,4 +46,4 @@ class DictHtmlBuilder:
 
     def export_dict_to_html(self, filename):
         with open(filename, "w") as f:
-            f.write(self.html_builder())
+            f.write(self.adj_animals_html_builder())

@@ -6,7 +6,6 @@ import concurrent.futures
 
 
 def init_args_parser():
-    # Define command-line arguments
     args_parser = argparse.ArgumentParser(description=SCRIPT_DESCRIPTIONS)
     args_parser.add_argument(BUILD_DICT_FLAG, action='store_true', help=BUILD_DICT_DESCRIPTIONS)
     args_parser.add_argument(SAVE_IMAGES_FLAG, action='store_true', help=SAVE_IMAGES_DESCRIPTIONS)
@@ -44,17 +43,15 @@ def run_all_tasks():
 
 def run_build_dict_task():
     global animal_adj_dict
-    if args.build_dict:
-        print(BUILDING_DICT_INFO)
-        animal_adj_dict = wiki_scraper.get_adjective_animals_dict()
-        print(DICT_SUCCESS_INFO)
-        display_adj_animal_dict_and_lcl_links(animal_adj_dict)
+    print(BUILDING_DICT_INFO)
+    animal_adj_dict = wiki_scraper.get_adjective_animals_dict()
+    print(DICT_SUCCESS_INFO)
+    display_adj_animal_dict_and_lcl_links(animal_adj_dict)
 
 
 def run_save_images_task():
-    if args.save_images:
-        print(SAVE_IMAGES_INFO)
-        wiki_scraper.save_animals_images()
+    print(SAVE_IMAGES_INFO)
+    wiki_scraper.save_animals_images()
 
 
 if __name__ == '__main__':
@@ -64,7 +61,7 @@ if __name__ == '__main__':
 
     if not args.build_dict and not args.save_images:
         run_all_tasks()
-
-    run_build_dict_task()
-
-    run_save_images_task()
+    if args.build_dict:
+        run_build_dict_task()
+    if args.save_images:
+        run_save_images_task()

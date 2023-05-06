@@ -1,8 +1,8 @@
 import os
 import sys
-import time
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from utils.constants import HTML_FILE_TITLE
 from utils.html_builder import DictHtmlBuilder
 from utils.wiki_animals_scraper import WikiScraper
 from utils.utils_functions import print_dir_content
@@ -73,7 +73,7 @@ def test_export_dict_to_html():
     scraper.init_species_table()
 
     adj_animal_dict = scraper.get_adjective_animals_dict()
-    html_builder = DictHtmlBuilder(adj_animal_dict)
+    html_builder = DictHtmlBuilder(adj_animal_dict, HTML_FILE_TITLE)
     html_builder.export_dict_to_html("index.html")
 
     assert os.path.exists("index.html")
