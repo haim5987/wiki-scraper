@@ -10,7 +10,7 @@ The `WikiScraper` class handles the Wikipedia implementation of building the dic
 
 The `DictHtmlBuilder` class is designed to receive the dictionary and file title and export it to an HTML file displaying the keys and values in a table format.
 
-To further organize the code, I created a utils package containing the files of the classes, a constants file containing common constant variables used in the project, and a utils_function file containing general functions like merge dictionaries and check response status.
+To further organize the code, I created a utils package containing the files of the classes, a constants file containing common constant variables used in the project, and a `utils_functions.py` file containing general functions like merge dictionaries and check response status.
 
 ### Implementation
 To read and write HTML files, I used the `BeautifulSoup` module, which offers a restful API for this task. To send requests to HTML pages, I used the `requests` module.
