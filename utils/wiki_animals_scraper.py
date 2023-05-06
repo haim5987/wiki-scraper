@@ -123,7 +123,6 @@ def process_row_for_img(row):
             save_image_from_img_src(TMP_PATH, animal_name, img_src)
 
 
-
 def get_img_src_from_soup(soup):
     """
     Get the image source from a Beautiful Soup object, attempting to find it in the 'infobox' or 'thumb' classes.

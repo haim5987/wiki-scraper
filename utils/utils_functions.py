@@ -12,6 +12,7 @@ def add_pair_to_dict(dictionary, key, value):
 def save_image_from_img_src(path, image_name, img_src):
     # Downloads an image from a given URL and saves it to a specified path and filename.
     response = requests.get(f'{HTTPS}{img_src}')
+    check_response_status(response)
     if check_response_status(response):
         with open(f'{path}/{image_name}.jpg', 'wb') as f:
             f.write(response.content)
@@ -23,8 +24,6 @@ def get_soup_of_url(url):
     if check_response_status(response):
         soup = BeautifulSoup(response.content, HTML_PARSER)
         return soup
-    else:
-        print('failed response')
 
 
 def get_img_src_from_infobox(wiki_page):
@@ -61,6 +60,8 @@ def is_valid_cells(cells):
 
 
 def check_response_status(response):
+    if not response.status_code == requests.codes.ok:
+        print('request failed')
     return response.status_code == requests.codes.ok
 
 
