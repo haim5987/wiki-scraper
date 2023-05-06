@@ -23,6 +23,8 @@ def get_soup_of_url(url):
     if check_response_status(response):
         soup = BeautifulSoup(response.content, HTML_PARSER)
         return soup
+    else:
+        print('failed response')
 
 
 def get_img_src_from_infobox(wiki_page):
