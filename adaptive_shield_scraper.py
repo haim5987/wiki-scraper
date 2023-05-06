@@ -9,6 +9,7 @@ def init_args_parser():
     args_parser = argparse.ArgumentParser(description=SCRIPT_DESCRIPTIONS)
     args_parser.add_argument(BUILD_DICT_FLAG, action='store_true', help=BUILD_DICT_DESCRIPTIONS)
     args_parser.add_argument(SAVE_IMAGES_FLAG, action='store_true', help=SAVE_IMAGES_DESCRIPTIONS)
+    parser.add_argument('--default', nargs='?', const=1, type=int)
     return args_parser.parse_args()
 
 
@@ -30,23 +31,32 @@ def display_adj_animal_dict(adj_animal_dict):
 
 def convert_adjective_animals_dict_to_html():
     global animal_adj_dict
-    converter = DictToHtmlConverter(animal_adj_dict, HTML_FILE_TITLE)
-    converter.export_dict_to_html(INDEX_HTML)
-    print(HTML_SUCCESS_INFO)
+    try:
+        converter = DictToHtmlConverter(animal_adj_dict, HTML_FILE_TITLE)
+        converter.export_dict_to_html(INDEX_HTML)
+        print(HTML_SUCCESS_INFO)
+    except Exception as e:
+        print(f'{CONVERT_HTML_ERROR}: {e}')
 
 
 def build_adjective_animals_dict():
     global animal_adj_dict
-    print(BUILDING_DICT_INFO)
-    animal_adj_dict = wiki_scraper.get_adjective_animals_dict()
-    print(DICT_SUCCESS_INFO)
-    return animal_adj_dict
+    try:
+        print(BUILDING_DICT_INFO)
+        animal_adj_dict = wiki_scraper.get_adjective_animals_dict()
+        print(DICT_SUCCESS_INFO)
+        return animal_adj_dict
+    except Exception as e:
+        print(f'{BUILD_DICT_ERROR}: {e}')
 
 
 def save_animals_images():
-    print(SAVE_IMAGES_INFO)
-    wiki_scraper.save_animals_images()
-    print(IMAGES_SUCCESS_INFO)
+    try:
+        print(SAVE_IMAGES_INFO)
+        wiki_scraper.save_animals_images()
+        print(IMAGES_SUCCESS_INFO)
+    except Exception as e:
+        print(f'{CONVERT_HTML_ERROR}: {e}')
 
 
 if __name__ == '__main__':
@@ -68,19 +78,10 @@ if __name__ == '__main__':
             animal_adj_dict_thread = executor.submit(build_adjective_animals_dict)
             img_saver_thread = executor.submit(wiki_scraper.save_animals_images)
 
-            try:
-                animal_adj_dict = animal_adj_dict_thread.result()
-            except Exception as e:
-                print(f'{BUILD_DICT_ERROR}: {e}')
+            animal_adj_dict = animal_adj_dict_thread.result()
 
-            try:
-                convert_adjective_animals_dict_to_html()
-            except Exception as e:
-                print(f'{CONVERT_HTML_ERROR}: {e}')
+            convert_adjective_animals_dict_to_html()
 
-            try:
-                img_saver_thread.result()
-            except Exception as e:
-                print(f'{BUILD_DICT_ERROR}: {e}')
+            img_saver_thread.result()
 
             display_adj_animal_dict_and_lcl_links(animal_adj_dict)
