@@ -2,7 +2,7 @@ name: Wiki Scraper Workflow
 
 on:
   push:
-    branches: [ main, fix-img ]
+    branches: [ main ]
 
 
 jobs:

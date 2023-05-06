@@ -1,5 +1,8 @@
 import os
 import sys
+import time
+
+from utils.utils_functions import print_dir_content
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.html_builder import DictHtmlBuilder
@@ -55,6 +58,9 @@ def test_tmp_dir_contain_valid_img():
     origin_tmp_len = len(os.listdir('/tmp'))
 
     scraper.save_animals_images()
+    time.sleep(2)
+    print_dir_content('/tmp')
+
 
     new_tmp_len = len(os.listdir('/tmp'))
     assert new_tmp_len > origin_tmp_len
