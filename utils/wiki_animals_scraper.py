@@ -122,5 +122,6 @@ def process_row_for_img(row, counter):
         animal_soup = get_soup_of_url(f'{WIKI_URL}{animal_href}')
         img_src = get_img_src_from_infobox(animal_soup)
         if img_src is None:
+            print(1)
             counter += 1
         save_image_from_img_src(TMP_PATH, animal_name, img_src)
