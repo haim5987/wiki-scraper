@@ -2,7 +2,6 @@ import os
 import sys
 import time
 
-
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.html_builder import DictHtmlBuilder
 from utils.wiki_animals_scraper import WikiScraper
@@ -61,7 +60,6 @@ def test_tmp_dir_contain_valid_img():
     scraper.save_animals_images()
     time.sleep(2)
     print_dir_content('/tmp')
-
 
     new_tmp_len = len(os.listdir('/tmp'))
     print(f'new_tmp_len {new_tmp_len}')

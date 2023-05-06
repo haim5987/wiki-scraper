@@ -64,3 +64,7 @@ HTML_FILE_TITLE = "Collateral Adjective and Animals Dictionary"
 CSS_TABLE_STYLE = 'align-items: center; justify-content: center; display: flex; border-collapse: collapse;'
 
 BORDER_STYLE = 'border: solid rgb(0,0,0,0.5) 1px;'
+
+REQUEST_HEADER_IMG = {
+        'User-Agent': 'MyApplication/1.0'
+    }

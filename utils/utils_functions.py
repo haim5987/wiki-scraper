@@ -1,5 +1,6 @@
 from utils.constants import *
 import requests
+import urllib.request
 import os
 from bs4 import BeautifulSoup
 
@@ -11,8 +12,7 @@ def add_pair_to_dict(dictionary, key, value):
 
 def save_image_from_img_src(path, image_name, img_src):
     # Downloads an image from a given URL and saves it to a specified path and filename.
-    response = requests.get(f'{HTTPS}{img_src}')
-    check_response_status(response)
+    response = requests.get(f'{HTTPS}{img_src}', headers=REQUEST_HEADER_IMG)
     if check_response_status(response):
         with open(f'{path}/{image_name}.jpg', 'wb') as f:
             f.write(response.content)
@@ -60,8 +60,6 @@ def is_valid_cells(cells):
 
 
 def check_response_status(response):
-    if not response.status_code == requests.codes.ok:
-        print('request failed')
     return response.status_code == requests.codes.ok
 
 
