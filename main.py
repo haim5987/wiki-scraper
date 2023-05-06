@@ -5,11 +5,14 @@ import concurrent.futures
 
 
 def display_adj_animal_dict_and_lcl_links(adj_animal_dict):
+    count = 0
     for adjective in adj_animal_dict.keys():
         print(f"List of Animals of {adjective}:")
         for animal in adj_animal_dict[adjective]:
+            count += 1
             print(f'    {animal}: {TMP_PATH}/{animal}.jpg')
         print('')
+    print(f'animal counter: {count}')
 
 
 if __name__ == '__main__':

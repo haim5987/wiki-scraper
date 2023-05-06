@@ -56,6 +56,7 @@ def test_tmp_dir_contain_valid_img():
     scraper.init_species_table()
 
     origin_tmp_len = len(os.listdir('/tmp'))
+    print(f'origin_tmp_len {origin_tmp_len}')
 
     scraper.save_animals_images()
     time.sleep(2)
@@ -63,6 +64,7 @@ def test_tmp_dir_contain_valid_img():
 
 
     new_tmp_len = len(os.listdir('/tmp'))
+    print(f'new_tmp_len {new_tmp_len}')
     assert new_tmp_len > origin_tmp_len
 
     assert os.path.isfile('/tmp/Lemur.jpg')
