@@ -122,6 +122,10 @@ def process_row_for_img(row):
         if img_src:
             save_image_from_img_src(TMP_PATH, animal_name, img_src)
 
+        else:
+            print(1)
+            print(animal_name)
+
 
 def get_img_src_from_soup(soup):
     """
