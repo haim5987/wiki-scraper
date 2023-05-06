@@ -11,11 +11,10 @@ def add_pair_to_dict(dictionary, key, value):
 
 def save_image_from_img_src(path, image_name, img_src):
     # Downloads an image from a given URL and saves it to a specified path and filename.
-    if img_src is not None:
-        response = requests.get(f'{HTTPS}{img_src}')
-        if check_response_status(response):
-            with open(f'{path}/{image_name}.jpg', 'wb') as f:
-                f.write(response.content)
+    response = requests.get(f'{HTTPS}{img_src}')
+    if check_response_status(response):
+        with open(f'{path}/{image_name}.jpg', 'wb') as f:
+            f.write(response.content)
 
 
 def get_soup_of_url(url):

@@ -118,9 +118,16 @@ def process_row_for_img(row):
         animal_href = get_html_link_href(animal_cell)
 
         animal_soup = get_soup_of_url(f'{WIKI_URL}{animal_href}')
-        img_src = get_img_src_from_infobox(animal_soup)
-        if img_src is None:
-            img_src = get_img_src_from_thumb(animal_soup)
-            if img_src is None:
-                print(1)
-        save_image_from_img_src(TMP_PATH, animal_name, img_src)
+        img_src = get_img_src_from_soup(animal_soup)
+        if img_src:
+            save_image_from_img_src(TMP_PATH, animal_name, img_src)
+        else:
+            print(1)
+            print(animal_name)
+
+
+def get_img_src_from_soup(soup):
+    img_src = get_img_src_from_infobox(soup)
+    if not img_src:
+        img_src = get_img_src_from_thumb(soup)
+    return img_src
