@@ -111,6 +111,7 @@ def process_row_for_img(row):
     This function processes a row in the species table to generate and saves animals images from animals links.
     """
     cells = row.find_all(CELL_TAG)
+    check_and_create_dir(TMP_PATH)
 
     if is_valid_cells(cells):
         animal_cell = cells[ANIMAL_CELL_INDEX]

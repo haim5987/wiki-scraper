@@ -18,6 +18,12 @@ def save_image_from_img_src(path, image_name, img_src):
             f.write(response.content)
 
 
+def check_and_create_dir(path):
+    # Checks if a directory exists at the given path, and creates it if it doesn't exist.
+    if not os.path.isdir(path):
+        os.makedirs(path)
+
+
 def get_soup_of_url(url):
     # Returns a BeautifulSoup object representing the HTML content of the given URL.
     response = requests.get(url)
