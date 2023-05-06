@@ -21,6 +21,8 @@ For the implementation of the images saver for every animal wiki page, I built t
 
 The main script is responsible for running the main and bonus tasks. Running the main script, building the dictionary, and saving the images will run parallelly as independent tasks using `concurrent.futures`. After they have successfully finished, the function of `display_adj_animal_dict_and_lcl_links` will display them and their local links, and the `DictHtmlBuilder` will build the HTML page and call it `index.html`.
 
+To export the dictionary to an HTML file, I utilized the `DictHtmlBuilder` class using `BeautifulSoup`, which allowed for modularity and potential support for additional dictionaries in the future. I also added custom CSS styles to the HTML file for font styling.
+
 ### Testing
 To ensure the functionality and reliability of the program, I implemented several tests using pytest. The tests were written to ensure that the `WikiScraper` and `DictHtmlBuilder` classes work properly with valid and invalid URLs.
 
