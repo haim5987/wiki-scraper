@@ -11,11 +11,10 @@ def add_pair_to_dict(dictionary, key, value):
 
 def save_image_from_img_src(path, image_name, img_src):
     # Downloads an image from a given URL and saves it to a specified path and filename.
-    if img_src is not None:
-        response = requests.get(f'{HTTPS}{img_src}')
-        if check_response_status(response):
-            with open(f'{path}/{image_name}.jpg', 'wb') as f:
-                f.write(response.content)
+    response = requests.get(f'{HTTPS}{img_src}')
+    if check_response_status(response):
+        with open(f'{path}/{image_name}.jpg', 'wb') as f:
+            f.write(response.content)
 
 
 def get_soup_of_url(url):
@@ -31,6 +30,15 @@ def get_img_src_from_infobox(wiki_page):
     infobox = wiki_page.find(TABLE, {CLASS: INFOBOX})
     if infobox:
         img_tag = infobox.find(IMG_TAG)
+        img_src = img_tag.get(SRC_TAG)
+        return img_src
+
+
+def get_img_src_from_thumb(wiki_page):
+    # Extracts the image source URL from a Wikipedia page infobox.
+    thumb_div = wiki_page.find('div', {CLASS: 'thumb'})
+    if thumb_div:
+        img_tag = thumb_div.find(IMG_TAG)
         img_src = img_tag.get(SRC_TAG)
         return img_src
 

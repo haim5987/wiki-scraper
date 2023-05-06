@@ -3,7 +3,7 @@ from utils.constants import *
 
 
 class DictHtmlBuilder:
-    def __init__(self, dictionary):
+    def __init__(self, dictionary): # todo add title
         self.my_dict = dictionary
         self.soup = BeautifulSoup(HTML_FILE_HEADER, HTML_PARSER)
         self.soup.title.string = HTML_FILE_TITLE

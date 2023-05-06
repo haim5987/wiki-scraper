@@ -43,12 +43,11 @@ class WikiScraper:
 
     def save_animals_images(self):
         self.__check_species_table_init()
-
         # Use concurrent.futures to map and reduce species table
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = [executor.submit(process_row_for_img, row) for row in self.__get_species_table_rows()]
 
-            # Wait all threads to complete
+            # Wait for all threads to complete
             for future in concurrent.futures.as_completed(futures):
                 try:
                     future.result()
@@ -68,7 +67,6 @@ class WikiScraper:
 
 
 # Helper Functions
-
 
 def get_adjective_lst(adjective_cell):
     """
@@ -120,5 +118,16 @@ def process_row_for_img(row):
         animal_href = get_html_link_href(animal_cell)
 
         animal_soup = get_soup_of_url(f'{WIKI_URL}{animal_href}')
-        img_src = get_img_src_from_infobox(animal_soup)
-        save_image_from_img_src(TMP_PATH, animal_name, img_src)
+        img_src = get_img_src_from_soup(animal_soup)
+        if img_src:
+            save_image_from_img_src(TMP_PATH, animal_name, img_src)
+        else:
+            print(1)
+            print(animal_name)
+
+
+def get_img_src_from_soup(soup):
+    img_src = get_img_src_from_infobox(soup)
+    if not img_src:
+        img_src = get_img_src_from_thumb(soup)
+    return img_src
