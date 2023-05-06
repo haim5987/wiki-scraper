@@ -49,7 +49,7 @@ class AdaptiveShieldScraper:
     def process_adjective_animals_data(self):
         global animal_adj_dict
         if self.args.build_dict:
-            build_adjective_animals_dict()
+            self.build_adjective_animals_dict()
             AdaptiveShieldScraper.display_adj_animal_dict(animal_adj_dict)
 
         elif self.args.save_images:
