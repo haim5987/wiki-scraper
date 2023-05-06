@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 from utils.constants import *
 
 
-class DictHtmlBuilder:
+class DictToHtmlConverter:
     def __init__(self, dictionary, title):
         self.my_dict = dictionary
         self.soup = BeautifulSoup(HTML_FILE_HEADER, HTML_PARSER)

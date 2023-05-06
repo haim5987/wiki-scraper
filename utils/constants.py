@@ -13,9 +13,11 @@ LINK_TAG = 'a'
 SUP_TAG = 'sup'
 HREF_TAG = 'href'
 TITLE_TAG = 'title'
+THUMB_TAG = 'thumb'
 IMG_TAG = 'img'
 SRC_TAG = 'src'
 H1_TAG = 'h1'
+DIV_TAG = 'div'
 
 # Consts
 QUES_MARK = '?'
@@ -43,6 +45,9 @@ PROCESSING_ANIMAL_ADJ_ERROR = 'Error processing row for dictionary'
 SOUP_INIT_ERROR = 'Error initialize BeautifulSoup object with the URL: '
 DIRECTORY_ERROR = 'is not a directory.'
 ACCESS_DIR_ERROR = 'Error accessing directory'
+BUILD_DICT_ERROR = 'Error: Failed to build collateral adjective dictionary'
+SAVE_IMAGES_ERROR = 'Error: Failed to save animals images'
+CONVERT_HTML_ERROR = 'Error: Failed to convert collateral adjectives animals dictionary to html'
 
 # Args Consts
 SCRIPT_DESCRIPTIONS = 'Build Collateral adjectives and animals dictionary,' \
